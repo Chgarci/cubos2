@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página de Inicio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="buscar_comp.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>CubeStats WCA</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">PR y resultados</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="buscador">
+            <input
+                type="text"
+                id="wcaIdInput"
+                placeholder="WCA ID (ej. 2009ZEMD01)"
+            >
+
+            <input
+                type="button"
+                id="buscarBtn"
+                value="Buscar"
+            >
+        </section>
+
+        <p id="mensaje"></p>
+
+        <section id="perfil" class="perfil" hidden>
+
+            <h2 id="nombre"></h2>
+
+            <div class="datos-persona">
+                <p>
+                    <strong>WCA ID:</strong>
+                    <span id="wcaId"></span>
+                </p>
+
+                <p>
+                    <strong>País:</strong>
+                    <span id="pais"></span>
+                </p>
+
+                <p>
+                    <strong>Torneos:</strong>
+                    <span id="competencias"></span>
+                </p>
+            </div>
+
+            <section class="prs">
+                <h3>🥇 Récords Personales (PRs)</h3>
+            
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Mejor Single</th>
+                            <th>Mejor Average</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody id="tablaPRs"></tbody>
+                </table>
+            </section>
+            
+
+            <section class="historial">
+                <h3>📜 Historial Completo de Resultados</h3>
+
+                <div class="tabla-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Torneo</th>
+                                <th>Cubo</th>
+                                <th>Ronda</th>
+                                <th>Mejor</th>
+                                <th>Media</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaHistorial"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mi Página de Inicio. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

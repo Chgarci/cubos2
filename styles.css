@@ -1,0 +1,291 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #2c3e50;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+
+/* ============================================================
+   BUSCADOR
+   ============================================================ */
+
+.buscador {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#wcaIdInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#buscarBtn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#buscarBtn:hover {
+    background-color: #2980b9;
+}
+
+
+/* ============================================================
+   MENSAJES
+   ============================================================ */
+
+#mensaje {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+/* ============================================================
+   PERFIL
+   ============================================================ */
+
+.perfil {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.perfil h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.datos-persona {
+    margin-bottom: 25px;
+}
+
+.datos-persona p {
+    margin: 8px 0;
+}
+
+
+/* ============================================================
+   TÍTULOS DE LAS SECCIONES
+   ============================================================ */
+
+.prs h3,
+.historial h3 {
+    margin-top: 30px;
+}
+
+
+/* ============================================================
+   TABLAS
+   ============================================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* ============================================================
+   TABLA DE PRs
+   ============================================================ */
+
+/* Categoría */
+
+.prs tbody td:first-child {
+    font-weight: bold;
+}
+
+
+/* Single */
+
+.tiempo-single {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+
+/* Average */
+
+.tiempo-average {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+
+/* ============================================================
+   COMPETICIÓN DEBAJO DEL PR
+   ============================================================ */
+
+.torneo-pr {
+    font-size: 12px;
+    color: #7f8c8d;
+    font-weight: normal;
+    margin-top: 3px;
+    line-height: 1.2;
+}
+
+
+/* ============================================================
+   DNF
+   ============================================================ */
+
+.dnf {
+    color: #e74c3c !important;
+    font-weight: bold;
+}
+
+
+/* ============================================================
+   DNS
+   ============================================================ */
+
+.dns {
+    color: #f39c12 !important;
+    font-weight: bold;
+}
+
+
+/* ============================================================
+   TABLA DEL HISTORIAL
+   ============================================================ */
+
+.historial table td:nth-child(4) {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.historial table td:nth-child(5) {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+
+/* ============================================================
+   SCROLL DEL HISTORIAL
+   ============================================================ */
+
+.tabla-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.tabla-scroll thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+}
+
+
+/* ============================================================
+   MÓVIL
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .buscador {
+        flex-direction: column;
+    }
+
+    #buscarBtn {
+        width: 100%;
+    }
+
+    .perfil {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 7px;
+    }
+
+    .torneo-pr {
+        font-size: 10px;
+    }
+}
