@@ -1,10 +1,10 @@
 /* 
 ============================================================
-RACHAS (se carga después de styles.css)
-============================================================ 
+   RACHAS (se carga después de styles.css)
+   ============================================================ 
 */
 
-.explicacion {
+   .explicacion {
     margin-bottom: 25px;
 }
 
@@ -81,9 +81,17 @@ RACHAS (se carga después de styles.css)
     text-align: center;
 }
 
-.rachas th:last-child {
+.col-centrada {
     text-align: center;
 }
+
+.celda-numero {
+    text-align: center;
+    font-weight: bold;
+}
+
+.numero-single { color: #27ae60; }
+.numero-average { color: #2980b9; }
 
 .pr-etiqueta {
     display: inline-block;

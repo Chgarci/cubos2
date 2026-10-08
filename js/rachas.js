@@ -303,6 +303,23 @@ function construirTabla({ detalle, actual, maxima }) {
 
         fila.appendChild(celdaPRs);
 
+        // Nº de PRs de single y de average en esta competición
+        const totalSingles = competicion.prs.filter(
+            pr => pr.tipo === "single"
+        ).length;
+
+        const totalAverages = competicion.prs.filter(
+            pr => pr.tipo === "average"
+        ).length;
+
+        fila.appendChild(
+            crear("td", "celda-numero numero-single", totalSingles || "-")
+        );
+
+        fila.appendChild(
+            crear("td", "celda-numero numero-average", totalAverages || "-")
+        );
+
         // Racha en ese momento
         fila.appendChild(
             crear("td", "celda-racha", competicion.racha || "-")
