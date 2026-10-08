@@ -293,7 +293,8 @@ function construirTabla({ detalle, actual, maxima }) {
                 celdaPRs.appendChild(
                     crear(
                         "span",
-                        pr.empate ? "pr-etiqueta pr-empate" : "pr-etiqueta",
+                        `pr-etiqueta pr-${pr.tipo}` +
+                            (pr.empate ? " pr-empate" : ""),
                         texto
                     )
                 );
