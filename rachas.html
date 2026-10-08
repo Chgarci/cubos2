@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racha de PRs | CubeStats WCA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="rachas.css">
+    <script type="module" src="js/rachas.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>CubeStats WCA</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">PR y resultados</a></li>
+                <li><a href="rachas.html">racha PR</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="explicacion">
+            <h2>Calculadora de rachas de PR</h2>
+            <p>
+                Recorremos todas las competiciones del competidor en orden.
+                Si en una competición consigue o iguala un PR en al menos un
+                evento (single o average), la racha continúa; si no, vuelve
+                a cero.
+            </p>
+        </section>
+
+        <section class="buscador">
+            <input
+                type="text"
+                id="wcaIdInput"
+                placeholder="WCA ID (ej. 2009ZEMD01)"
+            >
+
+            <input
+                type="button"
+                id="buscarBtn"
+                value="Buscar"
+            >
+        </section>
+
+        <p id="mensaje"></p>
+
+        <section id="resultado" class="perfil" hidden>
+
+            <h2 id="nombre"></h2>
+
+            <div class="datos-persona">
+                <p>
+                    <strong>WCA ID:</strong>
+                    <span id="wcaId"></span>
+                </p>
+
+                <p>
+                    <strong>Competiciones analizadas:</strong>
+                    <span id="totalCompeticiones"></span>
+                </p>
+            </div>
+
+            <div class="resumen-rachas">
+
+                <div class="tarjeta-racha tarjeta-actual">
+                    <h3>Racha actual</h3>
+                    <p class="racha-valor">
+                        <span id="rachaActual"></span>
+                        <span id="unidadActual" class="racha-unidad"></span>
+                    </p>
+                    <p id="detalleActual" class="racha-detalle"></p>
+                </div>
+
+                <div class="tarjeta-racha tarjeta-maxima">
+                    <h3>Racha más larga</h3>
+                    <p class="racha-valor">
+                        <span id="rachaMaxima"></span>
+                        <span id="unidadMaxima" class="racha-unidad"></span>
+                    </p>
+                    <p id="detalleMaxima" class="racha-detalle"></p>
+                </div>
+
+            </div>
+
+            <section class="rachas">
+                <h3>📈 Competición a competición</h3>
+
+                <div class="tabla-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Torneo</th>
+                                <th>Fecha</th>
+                                <th>PRs</th>
+                                <th>Racha</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaRachas"></tbody>
+                    </table>
+                </div>
+
+                <p class="leyenda">
+                    <span class="muestra muestra-max"></span> Racha más larga
+                    <span class="muestra muestra-actual"></span> Racha actual
+                </p>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CubeStats WCA. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
