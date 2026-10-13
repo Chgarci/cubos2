@@ -8,6 +8,7 @@
 
 import { construirPRs } from "./prs.js";
 import { construirHistorial } from "./history.js";
+import { obtenerNombrePais } from "./format.js";
 
 
 export function mostrarPerfil(data) {
@@ -31,9 +32,9 @@ export function mostrarPerfil(data) {
     const nombre =
         data.name || "Sin nombre";
 
-    const pais =
-        data.countryId ||
-        data.country ||
+    const pais = 
+        obtenerNombrePais(data.countryId) || 
+        obtenerNombrePais(data.country) ||
         "No especificado";
 
     const competencias =

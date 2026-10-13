@@ -5,8 +5,17 @@
 ** format.js
 */
 
-import { nombresEventos } from "./config.js";
+import { nombresEventos, NombresPaises } from "./config.js";
 
+export function obtenerNombrePais(codigoPais) {
+
+    if (!codigoPais) {
+        return "";
+    }
+
+    return NombresPaises[codigoPais] ||
+        codigoPais.toUpperCase();
+}
 
 export function obtenerNombreEvento(idEvento) {
 

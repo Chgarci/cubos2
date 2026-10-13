@@ -7,6 +7,7 @@
 
 
 import { esWcaId, buscarPersonas } from "./api.js";
+import { obtenerNombrePais } from "./format.js";
 
 const MAX_SUGERENCIAS = 10;
 
@@ -26,9 +27,11 @@ function mostrarSugerencias(lista, personas, alElegir) {
 
         boton.type = "button";
 
+        const pais = obtenerNombrePais(persona.pais) || "No especificado";
+
         boton.textContent =
             `${persona.nombre} · ${persona.id}` +
-            (persona.pais ? ` · ${persona.pais}` : "");
+            (persona.pais ? ` · ${pais}` : "");
 
         boton.addEventListener("click", () => {
             lista.replaceChildren();
