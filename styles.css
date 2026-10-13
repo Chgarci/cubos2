@@ -289,3 +289,27 @@ footer {
         font-size: 10px;
     }
 }
+
+.sugerencias {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px;
+}
+
+.sugerencias button {
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    color: #2c3e50;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sugerencias button:hover {
+    background-color: #eaf2fb;
+    border-color: #3498db;
+}

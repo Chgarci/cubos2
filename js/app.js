@@ -4,6 +4,7 @@
 
 import { obtenerCompetidor } from "./api.js";
 import { mostrarPerfil } from "./profile.js";
+import { procesarBusqueda } from "./search.js";
 
 
 // ============================================================
@@ -15,6 +16,7 @@ const campoWcaId = document.getElementById("wcaIdInput");
 
 const mensaje = document.getElementById("mensaje");
 const perfil = document.getElementById("perfil");
+const sugerencias = document.getElementById("sugerencias");
 
 
 // ============================================================
@@ -33,20 +35,19 @@ campoWcaId.addEventListener("keydown", evento => {
 
 
 // ============================================================
-// BUSCAR COMPETIDOR
+// BUSCAR (WCA ID o nombre)
 // ============================================================
 
 async function buscarCompetidor() {
 
-    const wcaId = campoWcaId.value
-        .trim()
-        .toUpperCase();
+    const texto = campoWcaId.value.trim();
 
+    sugerencias.replaceChildren();
 
-    if (!wcaId) {
+    if (!texto) {
 
         mostrarMensaje(
-            "Por favor, escribe un WCA ID."
+            "Por favor, escribe un WCA ID o un nombre."
         );
 
         perfil.hidden = true;
@@ -54,23 +55,36 @@ async function buscarCompetidor() {
         return;
     }
 
+    perfil.hidden = true;
+
+    await procesarBusqueda(texto, {
+        lista: sugerencias,
+        mostrarMensaje,
+        cargar: cargarCompetidor
+    });
+}
+
+
+// ============================================================
+// CARGAR COMPETIDOR (ya con WCA ID)
+// ============================================================
+
+async function cargarCompetidor(wcaId) {
+
+    campoWcaId.value = wcaId;
 
     mostrarMensaje("Buscando...");
 
     perfil.hidden = true;
-
 
     try {
 
         const data =
             await obtenerCompetidor(wcaId);
 
-
         mostrarPerfil(data);
 
-
         mensaje.textContent = "";
-
 
     } catch (error) {
 

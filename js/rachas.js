@@ -4,6 +4,7 @@
 
 import { obtenerCompetidor, obtenerFechas } from "./api.js";
 import { calcularRachas } from "./streak.js";
+import { procesarBusqueda } from "./search.js";
 import {
     obtenerNombreEvento,
     obtenerNombreTorneo,
@@ -20,6 +21,7 @@ const campoWcaId = document.getElementById("wcaIdInput");
 
 const mensaje = document.getElementById("mensaje");
 const resultado = document.getElementById("resultado");
+const sugerencias = document.getElementById("sugerencias");
 
 const tablaRachas = document.getElementById("tablaRachas");
 
@@ -44,17 +46,35 @@ campoWcaId.addEventListener("keydown", evento => {
 
 async function buscarRachas() {
 
-    const wcaId = campoWcaId.value
-        .trim()
-        .toUpperCase();
+    const texto = campoWcaId.value.trim();
 
-    if (!wcaId) {
+    sugerencias.replaceChildren();
 
-        mensaje.textContent = "Por favor, escribe un WCA ID.";
+    if (!texto) {
+
+        mensaje.textContent = "Por favor, escribe un WCA ID o un nombre.";
         resultado.hidden = true;
 
         return;
     }
+
+    resultado.hidden = true;
+
+    await procesarBusqueda(texto, {
+        lista: sugerencias,
+        mostrarMensaje: texto => { mensaje.textContent = texto; },
+        cargar: cargarRachas
+    });
+}
+
+
+// ============================================================
+// CARGAR RACHAS (ya con WCA ID)
+// ============================================================
+
+async function cargarRachas(wcaId) {
+
+    campoWcaId.value = wcaId;
 
     mensaje.textContent = "Buscando...";
     resultado.hidden = true;

@@ -7,13 +7,52 @@
 
 import { API_BASE } from "./config.js";
 
-// Misma carpeta del repositorio, pero con las competiciones
+// API oficial: SOLO para buscar un WCA ID a partir de un nombre
+const WCA_OFICIAL = "https://www.worldcubeassociation.org/api/v0";
+
+// API no oficial (archivos estáticos): resultados, PRs y fechas
 const COMPETICIONES_BASE =
     API_BASE.replace("/persons/", "/competitions/");
 
 // Cuántas competiciones se piden a la vez
 const PETICIONES_SIMULTANEAS = 10;
 
+
+// ============================================================
+// BUSCAR POR NOMBRE (API oficial)
+// ============================================================
+
+export function esWcaId(texto) {
+
+    return /^\d{4}[A-Z]{4}\d{2}$/.test(texto);
+}
+
+
+export async function buscarPersonas(nombre) {
+
+    const respuesta = await fetch(
+        `${WCA_OFICIAL}/search/persons?q=${encodeURIComponent(nombre)}`
+    );
+
+    if (!respuesta.ok) {
+        throw new Error(`Error ${respuesta.status} al buscar "${nombre}"`);
+    }
+
+    const datos = await respuesta.json();
+
+    return (datos.result || [])
+        .filter(persona => persona.wca_id)
+        .map(persona => ({
+            id: persona.wca_id,
+            nombre: persona.name,
+            pais: persona.country_iso2
+        }));
+}
+
+
+// ============================================================
+// COMPETIDOR (API no oficial)
+// ============================================================
 
 export async function obtenerCompetidor(wcaId) {
 
