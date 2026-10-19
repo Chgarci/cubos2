@@ -15,136 +15,63 @@ import {
 
 export function construirHistorial(data) {
 
-    const tablaHistorial =
-        document.getElementById("tablaHistorial");
+    const tablaHistorial = document.getElementById("tablaHistorial");
 
     tablaHistorial.replaceChildren();
 
+    if (!data.results || Object.keys(data.results).length === 0) {
 
-    if (
-        !data.results ||
-        Object.keys(data.results).length === 0
-    ) {
-
-        mostrarSinResultados(
-            tablaHistorial
-        );
+        mostrarSinResultados(tablaHistorial);
 
         return;
     }
 
+    const fragmento = document.createDocumentFragment();
 
-    Object.entries(
-        data.results
-    ).forEach(
-        ([nombreTorneo, categorias]) => {
+    // ============================================================
+    // PROCESAR Y RENDERIZAR EN EL ORDEN NATIVO DEL JSON
+    // ============================================================
+    Object.entries(data.results).forEach(([nombreTorneo, categorias]) => {
+        Object.entries(categorias).forEach(([idCategoria, rondas]) => {
+            rondas.forEach(ronda => {
 
-            Object.entries(
-                categorias
-            ).forEach(
-                ([idCategoria, rondas]) => {
+                const fila = document.createElement("tr");
 
-                    rondas.forEach(
-                        ronda => {
+                // Torneo
+                const torneo = document.createElement("td");
+                torneo.textContent = obtenerNombreTorneo(nombreTorneo);
 
-                            const fila =
-                                document.createElement("tr");
+                // Categoría
+                const categoria = document.createElement("td");
+                categoria.textContent = obtenerNombreEvento(idCategoria);
 
+                // Ronda
+                const rondaElemento = document.createElement("td");
+                rondaElemento.textContent = ronda.round || "-";
 
-                            // ------------------------------------------------
-                            // TORNEO
-                            // ------------------------------------------------
+                // Mejor
+                const mejor = document.createElement("td");
+                mejor.textContent = formatearTiempoWCA(ronda.best, idCategoria, "single");
+                aplicarColorResultado(mejor, ronda.best);
 
-                            const torneo =
-                                document.createElement("td");
+                // Media
+                const media = document.createElement("td");
+                media.textContent = formatearTiempoWCA(ronda.average, idCategoria, "average");
+                aplicarColorResultado(media, ronda.average);
 
-                            torneo.textContent =
-                                obtenerNombreTorneo(
-                                    nombreTorneo
-                                );
+                // Construir estructura de la fila
+                fila.appendChild(torneo);
+                fila.appendChild(categoria);
+                fila.appendChild(rondaElemento);
+                fila.appendChild(mejor);
+                fila.appendChild(media);
 
+                fragmento.appendChild(fila);
+            });
+        });
+    });
 
-                            // ------------------------------------------------
-                            // CATEGORÍA
-                            // ------------------------------------------------
-
-                            const categoria =
-                                document.createElement("td");
-
-                            categoria.textContent =
-                                obtenerNombreEvento(
-                                    idCategoria
-                                );
-
-
-                            // ------------------------------------------------
-                            // RONDA
-                            // ------------------------------------------------
-
-                            const rondaElemento =
-                                document.createElement("td");
-
-                            rondaElemento.textContent =
-                                ronda.round || "-";
-
-
-                            // ------------------------------------------------
-                            // MEJOR
-                            // ------------------------------------------------
-
-                            const mejor =
-                                document.createElement("td");
-
-                            mejor.textContent =
-                                formatearTiempoWCA(
-                                    ronda.best,
-                                    idCategoria,
-                                    "single"
-                                );
-
-                            aplicarColorResultado(
-                                mejor,
-                                ronda.best
-                            );
-
-
-                            // ------------------------------------------------
-                            // MEDIA
-                            // ------------------------------------------------
-
-                            const media =
-                                document.createElement("td");
-
-                            media.textContent =
-                                formatearTiempoWCA(
-                                    ronda.average,
-                                    idCategoria,
-                                    "average"
-                                );
-
-                            aplicarColorResultado(
-                                media,
-                                ronda.average
-                            );
-
-
-                            // ------------------------------------------------
-                            // AÑADIR FILA
-                            // ------------------------------------------------
-
-                            fila.appendChild(torneo);
-                            fila.appendChild(categoria);
-                            fila.appendChild(rondaElemento);
-                            fila.appendChild(mejor);
-                            fila.appendChild(media);
-
-                            tablaHistorial.appendChild(fila);
-                        }
-                    );
-                }
-            );
-        }
-    );
+    tablaHistorial.appendChild(fragmento);
 }
 
 
@@ -154,23 +81,10 @@ export function construirHistorial(data) {
 
 function mostrarSinResultados(tablaHistorial) {
 
-    const fila =
-        document.createElement("tr");
-
-
-    const celda =
-        document.createElement("td");
-
-
+    const fila = document.createElement("tr");
+    const celda = document.createElement("td");
     celda.colSpan = 5;
-
-
-    celda.textContent =
-        "No hay resultados registrados.";
-
-
+    celda.textContent = "No hay resultados registrados.";
     fila.appendChild(celda);
-
-
     tablaHistorial.appendChild(fila);
 }
