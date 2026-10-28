@@ -104,7 +104,7 @@ export function calcularRachas(competiciones) {
 
         actual = prs.length > 0 ? actual + 1 : 0;
 
-        if (actual > 0 && actual >= maxLongitud) {
+        if (actual > 0 && actual > maxLongitud) {
             maxLongitud = actual;
             maxFin = indice;
         }
