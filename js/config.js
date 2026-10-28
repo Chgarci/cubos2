@@ -1,4 +1,8 @@
-//config.js
+/*
+** File description:
+** config.js
+*/
+
 
 
 export const API_BASE =

@@ -1,6 +1,4 @@
 /*
-** EPITECH PROJECT, 2026
-** ver_pb
 ** File description:
 ** api.js
 */
