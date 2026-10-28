@@ -318,6 +318,13 @@ footer {
     color: white;
 }
 
+footer .legal-disclaimer {
+    font-size: 0.8rem;
+    color: #bdc3c7; /* Un gris claro con buen contraste sobre el fondo azul oscuro */
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 12px auto 0 auto; /* Centra el bloque y le da separación con el copyright */
+}
 
 /* ============================================================
    MÓVIL / RESPONSIVE
