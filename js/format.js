@@ -155,39 +155,35 @@ function formatearMBF(valor) {
     const numero =
         String(valor).padStart(9, "0");
 
-
+    // Los 2 primeros dígitos (posiciones 0 y 1)
     const diferenciaCodificada =
         parseInt(
-            numero.substring(1, 3),
+            numero.substring(0, 2),
             10
         );
 
-
+    // Los 5 dígitos centrales (posiciones 2, 3, 4, 5 y 6)
     const tiempo =
         parseInt(
-            numero.substring(3, 8),
+            numero.substring(2, 7),
             10
         );
 
-
+    // Los 2 últimos dígitos (posiciones 7 y 8)
     const fallados =
         parseInt(
-            numero.substring(8, 9),
+            numero.substring(7, 9),
             10
         );
-
 
     const diferencia =
         99 - diferenciaCodificada;
 
-
     const resueltos =
         diferencia + fallados;
 
-
     const intentados =
         resueltos + fallados;
-
 
     if (tiempo === 99999) {
 
