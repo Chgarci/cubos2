@@ -15,7 +15,9 @@ import {
     obtenerNombreTorneo,
     formatearTiempoWCA
 } from "./format.js";
+import { inicializarIdioma } from "./i18n.js";
 
+inicializarIdioma();
 
 // ============================================================
 // ELEMENTOS DEL HTML

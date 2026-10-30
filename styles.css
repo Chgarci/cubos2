@@ -19,6 +19,7 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
+    position: relative;
 }
 
 nav ul {
@@ -35,6 +36,40 @@ nav li {
 nav a {
     color: white;
     text-decoration: none;
+}
+
+.selector-idioma {
+    position: absolute;
+    top: 20px;       /* Lo alinea verticalmente a la misma altura que tu padding */
+    right: 20px;     /* Lo pega elegantemente al borde derecho de la pantalla */
+    display: flex;
+    gap: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 3px;
+    border-radius: 6px;
+}
+
+.selector-idioma button {
+    background: none;
+    border: none;
+    color: #b0bec5;  /* Un gris claro elegante para el idioma inactivo */
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.selector-idioma button:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Clase que aplicará JavaScript para iluminar el idioma activo */
+.selector-idioma button.activo {
+    background-color: #3498db; /* Azul brillante que combina con tu #2c3e50 */
+    color: white;
 }
 
 
@@ -331,6 +366,16 @@ footer .legal-disclaimer {
    ============================================================ */
 
 @media (max-width: 600px) {
+
+    header {
+        padding-top: 55px;
+    }
+
+    .selector-idioma {
+        top: 10px;
+        right: 50%;
+        transform: translateX(50%);
+    }
 
     .buscador,
     .filtros-historial {

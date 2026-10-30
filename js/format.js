@@ -3,7 +3,8 @@
 ** format.js
 */
 
-import { nombresEventos, NombresPaises } from "./config.js";
+import { nombresEventos, traducciones } from "./config.js";
+import { obtenerIdiomaActual } from "./i18n.js";
 
 export function obtenerNombrePais(codigoPais) {
 
@@ -11,8 +12,10 @@ export function obtenerNombrePais(codigoPais) {
         return "";
     }
 
-    return NombresPaises[codigoPais] ||
-        codigoPais.toUpperCase();
+    const idioma = obtenerIdiomaActual();
+    const codigo = codigoPais.toUpperCase();
+
+    return traducciones[idioma].paises[codigo] || codigo
 }
 
 export function obtenerNombreEvento(idEvento) {

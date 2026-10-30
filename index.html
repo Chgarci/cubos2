@@ -13,10 +13,14 @@
     <header>
         <h1>CubeStats WCA</h1>
 
+        <div class="selector-idioma">
+            <button id="btn-es">ES</button>
+            <button id="btn-en">EN</button>
+        </div>
         <nav>
             <ul>
-                <li><a href="index.html">PR y resultados</a></li>
-                <li><a href="rachas.html">Racha PR</a></li>
+                <li><a href="index.html" data-i18n="navResultados">PR y resultados</a></li>
+                <li><a href="rachas.html" data-i18n="navRachas">Racha PR</a></li>
             </ul>
         </nav>
     </header>
@@ -27,12 +31,14 @@
             <input
                 type="text"
                 id="wcaIdInput"
+                data-i18n-placeholder="placeholderBuscador"
                 placeholder="WCA ID o nombre (ej. 2009ZEMD01 / Feliks Zemdegs)"
             >
 
             <input
                 type="button"
                 id="buscarBtn"
+                data-i18n="botonBuscar"
                 value="Buscar"
             >
         </section>
@@ -52,25 +58,25 @@
                 </p>
 
                 <p>
-                    <strong>País:</strong>
+                    <strong data-i18n="labelPais">País:</strong>
                     <span id="pais"></span>
                 </p>
 
                 <p>
-                    <strong>Torneos:</strong>
+                    <strong data-i18n="labelTorneos">Torneos:</strong>
                     <span id="competencias"></span>
                 </p>
             </div>
 
             <section class="prs">
-                <h3>🥇 Récords Personales (PRs)</h3>
+                <h3 data-i18n="tituloPR">🥇 Récords Personales (PRs)</h3>
             
                 <table>
                     <thead>
                         <tr>
-                            <th>Categoría</th>
-                            <th>Mejor Single</th>
-                            <th>Mejor Average</th>
+                            <th data-i18n="thCategoria">Categoría</th>
+                            <th data-i18n="thMejorSingle">Mejor Single</th>
+                            <th data-i18n="thMejorAverage">Mejor Average</th>
                         </tr>
                     </thead>
             
@@ -80,20 +86,18 @@
             
 
             <section class="historial">
-                <h3>📜 Historial Completo de Resultados</h3>
+                <h3 data-i18n="tituloHistorial">📜 Historial Completo de Resultados</h3>
 
-                <!-- ============================================================ -->
-                <!-- NUEVA SECCIÓN DE FILTROS -->
-                <!-- ============================================================ -->
                 <div class="filtros-historial">
                     <input 
                         type="text" 
                         id="filtroTorneo" 
+                        data-i18n-placeholder="placeholderFiltroTorneo"
                         placeholder="🔍 Buscar por torneo..."
                     >
                     
                     <select id="filtroCategoria">
-                        <option value="">All Categories (Todas)</option>
+                        <option value="" data-i18n="optionTodasCategorias">All Categories (Todas)</option>
                         <option value="333">3x3x3 Cube</option>
                         <option value="222">2x2x2 Cube</option>
                         <option value="444">4x4x4 Cube</option>
@@ -118,11 +122,11 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Torneo</th>
-                                <th>Cubo</th>
-                                <th>Ronda</th>
-                                <th>Mejor</th>
-                                <th>Media</th>
+                                <th data-i18n="thTorneo">Torneo</th>
+                                <th data-i18n="thCubo">Cubo</th>
+                                <th data-i18n="thRonda">Ronda</th>
+                                <th data-i18n="thMejor">Mejor</th>
+                                <th data-i18n="thMedia">Media</th>
                             </tr>
                         </thead>
 
@@ -136,8 +140,8 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 CubeStats WCA. Todos los derechos reservados.</p>
-        <p class="legal-disclaimer">
+        <p>&copy; 2026 CubeStats WCA. <span data-i18n="copyrightDerechos">Todos los derechos reservados.</span></p>
+        <p class="legal-disclaimer" data-i18n="disclaimerTexto">
             Este sitio web es un proyecto personal, independiente y sin fines de lucro. No está afiliado, respaldado, asociado ni patrocinado oficialmente por la World Cube Association (WCA). Todos los datos de competiciones y marcas mostrados son públicos, se obtienen a partir de herramientas de código abierto de la comunidad en GitHub y pertenecen a sus respectivos titulares.
         </p>
     </footer>

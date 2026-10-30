@@ -10,6 +10,9 @@
 import { obtenerCompetidor } from "./api.js";
 import { mostrarPerfil } from "./profile.js";
 import { procesarBusqueda } from "./search.js";
+import { inicializarIdioma } from "./i18n.js";
+
+inicializarIdioma();
 
 
 // ============================================================
