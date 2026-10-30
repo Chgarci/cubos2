@@ -55,12 +55,12 @@ export const traducciones = {
         labelTorneos: "Torneos:",
 
 
-        tituloPR: "🥇 Récords Personales (PRs)",
+        tituloPR: "Récords Personales (PRs)",
         thCategoria: "Categoría",
         thMejorSingle: "Mejor Single",
         thMejorAverage: "Mejor Average",
-        tituloHistorial: "📜 Historial Completo de Resultados",
-        placeholderFiltroTorneo: "🔍 Buscar por torneo...",
+        tituloHistorial: "Historial Completo de Resultados",
+        placeholderFiltroTorneo: "Buscar por torneo...",
         optionTodasCategorias: "Todas",
         
         thTorneo: "Torneo",
@@ -333,7 +333,7 @@ export const traducciones = {
         tituloRachaActual: "Racha actual",
         tituloRachaMaxima: "Racha más larga",
 
-        tituloCompeticionACompeticion: "📈 Competición a competición",
+        tituloCompeticionACompeticion: "Competición a competición",
         thFecha: "Fecha",
         thRachaMomento: "Racha",
         leyendaRachaMax: "Racha más larga",
@@ -355,12 +355,12 @@ export const traducciones = {
 
 
         // index.html
-        tituloPR: "🥇 Personal Records (PRs)",
+        tituloPR: "Personal Records (PRs)",
         thCategoria: "Category",
         thMejorSingle: "Best Single",
         thMejorAverage: "Best Average",
-        tituloHistorial: "📜 Complete Results History",
-        placeholderFiltroTorneo: "🔍 Search tournament...",
+        tituloHistorial: "Complete Results History",
+        placeholderFiltroTorneo: "Search tournament...",
         optionTodasCategorias: "All Categories",
 
         thTorneo: "Tournament",
@@ -628,7 +628,7 @@ export const traducciones = {
         tituloRachaActual: "Current streak",
         tituloRachaMaxima: "Longest streak",
 
-        tituloCompeticionACompeticion: "📈 Competition to competition",
+        tituloCompeticionACompeticion: "Competition to competition",
         thFecha: "Date",
         thRachaMomento: "Streak",
         leyendaRachaMax: "Longest streak",
