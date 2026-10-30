@@ -15,7 +15,7 @@ import {
     obtenerNombreTorneo,
     formatearTiempoWCA
 } from "./format.js";
-import { inicializarIdioma } from "./i18n.js";
+import { inicializarIdioma, obtenerIdiomaActual} from "./i18n.js";
 
 inicializarIdioma();
 
@@ -167,8 +167,16 @@ function formatearFecha(fecha) {
         return "-";
     }
 
+    const idioma = obtenerIdiomaActual();
+    const mapaLocales = {
+        es: "es-ES",
+        en: "en-US"
+    }
+
+    const locale = mapaLocales[idioma] || "es-ES";
+
     return new Date(fecha + "T00:00:00").toLocaleDateString(
-        "es-ES",
+        locale,
         { year: "numeric", month: "short", day: "numeric" }
     );
 }

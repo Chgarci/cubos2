@@ -39,17 +39,37 @@ export const nombresEventos = {
 
 export const traducciones = {
     es: {
+
+        // Textos de la interfaz
+
+        navResultados: "PR y resultados",
+        navRachas: "Racha PR",
         placeholderBuscador: "WCA ID o nombre (ej. 2009ZEMD01 / Feliks Zemdegs)",
         botonBuscar: "Buscar",
         buscando: "Buscando...",
         errorPerfil: "No se pudo encontrar el perfil. Comprueba el WCA ID y tu conexión.",
+
+        // Textos de la página principal (index.html)
+
+        labelPais: "País:",
+        labelTorneos: "Torneos:",
+
+
         tituloPR: "🥇 Récords Personales (PRs)",
-        colCategoria: "Categoría",
-        colMejorSingle: "Mejor Single",
-        colMejorAverage: "Mejor Average",
+        thCategoria: "Categoría",
+        thMejorSingle: "Mejor Single",
+        thMejorAverage: "Mejor Average",
         tituloHistorial: "📜 Historial Completo de Resultados",
-        filtroTorneo: "🔍 Buscar por torneo...",
-        filtroCategoriaTodas: "All Categories (Todas)",
+        placeholderFiltroTorneo: "🔍 Buscar por torneo...",
+        optionTodasCategorias: "Todas",
+        
+        thTorneo: "Torneo",
+        thCubo: "Cubo",
+        thRonda: "Ronda",
+        thMejor: "Mejor",
+        thMedia: "Media",
+
+
 
 
         paises: {
@@ -302,21 +322,52 @@ export const traducciones = {
             "ZA" : "Sudáfrica",
             "ZM" : "Zambia",
             "ZW" : "Zimbabue"
-        }
+        },
+
+
+        // Textos de la página de rachas (rachas.html)
+
+        tituloCalcRachas: "Calculadora de rachas de PR",
+        textoExplicacionRachas: 
+        "Recorremos todas las competiciones del competidor en orden. Si en una competición consigue o iguala un PR en al menos un evento (single o average), la racha continúa; si no, vuelve a cero.",
+        tituloRachaActual: "Racha actual",
+        tituloRachaMaxima: "Racha más larga",
+
+        tituloCompeticionACompeticion: "📈 Competición a competición",
+        thFecha: "Fecha",
+        thRachaMomento: "Racha",
+        leyendaRachaMax: "Racha más larga",
+        leyendaRachaActual: "Racha actual",
 
     },
     en: {
+
+        navResultados: "PRs & Results",
+        navRachas: "PR Streak",
+
+        labelPais: "Country:",
+        labelTorneos: "Tournaments:",
         placeholderBuscador: "WCA ID or name (e.g., 2009ZEMD01 / Feliks Zemdegs)",
         botonBuscar: "Search",
         buscando: "Searching...",
         errorPerfil: "Could not find profile. Check the WCA ID and your connection.",
+
+
+
+        // index.html
         tituloPR: "🥇 Personal Records (PRs)",
-        colCategoria: "Category",
-        colMejorSingle: "Best Single",
-        colMejorAverage: "Best Average",
+        thCategoria: "Category",
+        thMejorSingle: "Best Single",
+        thMejorAverage: "Best Average",
         tituloHistorial: "📜 Complete Results History",
-        filtroTorneo: "🔍 Search tournament...",
-        filtroCategoriaTodas: "All Categories",
+        placeholderFiltroTorneo: "🔍 Search tournament...",
+        optionTodasCategorias: "All Categories",
+
+        thTorneo: "Tournament",
+        thCubo: "Cube",
+        thRonda: "Round",
+        thMejor: "Best",
+        thMedia: "Average",
 
         paises: {
             "AD" : "Andorra",
@@ -568,9 +619,20 @@ export const traducciones = {
             "ZA" : "South Africa",
             "ZM" : "Zambia",
             "ZW" : "Zimbabwe"
-        }
+        },
         
+        //rachas.html
+        tituloCalcRachas: "PR Streak Calculator",
+        textoExplicacionRachas: 
+        "We go through all the competitor's competitions in order. If in a competition they achieve or match a PR in at least one event (single or average), the streak continues; if not, it resets to zero.",
+        tituloRachaActual: "Current streak",
+        tituloRachaMaxima: "Longest streak",
 
+        tituloCompeticionACompeticion: "📈 Competition to competition",
+        thFecha: "Date",
+        thRachaMomento: "Streak",
+        leyendaRachaMax: "Longest streak",
+        leyendaRachaActual: "Current streak",
 
     }
 };
