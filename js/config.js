@@ -42,7 +42,7 @@ export const traducciones = {
 
         // Textos de la interfaz
 
-        navResultados: "PR y resultados",
+        navResultados: "PR y Resultados",
         navRachas: "Racha PR",
         placeholderBuscador: "WCA ID o nombre (ej. 2009ZEMD01 / Feliks Zemdegs)",
         botonBuscar: "Buscar",
@@ -324,6 +324,14 @@ export const traducciones = {
             "ZW" : "Zimbabue"
         },
 
+        rondas: {
+            ronda_vacia: "-",
+            Final: "Final",
+            Semifinal: "Semifinal",
+            "First round": "Primera ronda",
+            "Second round": "Segunda ronda",
+            "Third round": "Tercera ronda"
+        },
 
         // Textos de la página de rachas (rachas.html)
 
@@ -339,7 +347,34 @@ export const traducciones = {
         leyendaRachaMax: "Racha más larga",
         leyendaRachaActual: "Racha actual",
 
+        // Errores de API
+        error_buscar_personas: "Error {status} al buscar \"{nombre}\"",
+
+        // Mensajes de la interfaz de búsqueda
+        buscando_por_nombre: "Buscando por nombre...",
+        error_buscar_personas_fallback: "No se pudo buscar por nombre. Inténtalo de nuevo.",
+        sin_resultados_nombre: "No se encontró ningún competidor con ese nombre.",
+        multiples_resultados: "Hay varios resultados, elige uno:",
+        pais_no_especificado: "No especificado",
+
+        escribe_id_o_nombre: "Escribe un WCA ID o un nombre para buscar",
+        buscando:"Buscando...",
+        error_cargar_competidor_fallback: "No se pudo encontrar el perfil. Comprueba que el WCA ID sea correcto y que tengas conexión a Internet.",
+        error_competidor_no_encontrado: "No se pudo encontrar el competidor con WCA ID {wcaId}. Comprueba que sea correcto y que tengas conexión a Internet.",
+
+
+        sin_pr: "Sin PR",
+        single_corto: "Single",
+        average_corto: "Average",
+        pr_empate_sufijo: " (empate)",
+
+
+        sin_racha_activa: "No hay racha activa",
+        competicion_plural: "Competiciones",
     },
+
+
+
     en: {
 
         navResultados: "PRs & Results",
@@ -621,6 +656,16 @@ export const traducciones = {
             "ZW" : "Zimbabwe"
         },
         
+
+        rondas: {
+            ronda_vacia: "-",
+            Final: "Final",
+            Semifinal: "Semifinal",
+            "First round": "First round",
+            "Second round": "Second round",
+            "Third round": "Third round",
+        },
+
         //rachas.html
         tituloCalcRachas: "PR Streak Calculator",
         textoExplicacionRachas: 
@@ -634,5 +679,27 @@ export const traducciones = {
         leyendaRachaMax: "Longest streak",
         leyendaRachaActual: "Current streak",
 
+
+        error_buscar_personas: "Error {status} while searching for \"{nombre}\"",
+        
+        // Mensajes de la interfaz de búsqueda
+        buscando_por_nombre: "Searching by name...",
+        error_buscar_personas_fallback: "Could not search by name. Please try again.",
+        sin_resultados_nombre: "No competitor found with that name.",
+        multiples_resultados: "Multiple results found, please choose one:",
+        pais_no_especificado: "Not specified",
+
+        escribe_id_o_nombre: "Enter a WCA ID or name to search",
+        buscando:"Searching...",
+        error_cargar_competidor_fallback: "Could not find the profile. Check that the WCA ID is correct and that you have an internet connection.",
+        error_competidor_no_encontrado: "Could not find competitor with WCA ID {wcaId}. Please check that it is correct and that you have an internet connection.",
+
+        sin_pr: "No PR",
+        single_corto: "Single",
+        average_corto: "Average",
+        pr_empate_sufijo: " (tie)",
+
+        sin_racha_activa: "No active streak",
+        competicion_plural: "Competitions",
     }
 };

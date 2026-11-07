@@ -10,7 +10,7 @@
 import { obtenerCompetidor } from "./api.js";
 import { mostrarPerfil } from "./profile.js";
 import { procesarBusqueda } from "./search.js";
-import { inicializarIdioma } from "./i18n.js";
+import { inicializarIdioma, t } from "./i18n.js";
 
 inicializarIdioma();
 
@@ -54,9 +54,7 @@ async function buscarCompetidor() {
 
     if (!texto) {
 
-        mostrarMensaje(
-            "Por favor, escribe un WCA ID o un nombre."
-        );
+        mostrarMensaje(t("escribe_id_o_nombre"));
 
         perfil.hidden = true;
 
@@ -81,7 +79,7 @@ async function cargarCompetidor(wcaId) {
 
     campoWcaId.value = wcaId;
 
-    mostrarMensaje("Buscando...");
+    mostrarMensaje(t("buscando"));
 
     perfil.hidden = true;
 
@@ -100,11 +98,12 @@ async function cargarCompetidor(wcaId) {
 
         perfil.hidden = true;
 
-        mostrarMensaje(
-            "No se pudo encontrar el perfil. " +
-            "Comprueba que el WCA ID sea correcto " +
-            "y que tengas conexión a Internet."
-        );
+        if (error.isI18n) {
+            mostrarMensaje(t(error.message, error.context));
+        } else {
+            // Error genérico por si falla internet
+            mostrarMensaje(t("error_cargar_competidor_fallback"));
+        }
     }
 }
 
