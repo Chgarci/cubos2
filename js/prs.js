@@ -13,21 +13,15 @@ import {
 
 export function construirPRs(data) {
 
-    const tablaPRs =
-        document.getElementById("tablaPRs");
+    const tablaPRs = document.getElementById("tablaPRs");
 
     tablaPRs.replaceChildren();
 
-
     const mapaPRs = {};
 
+    const singles = data.rank?.singles || [];
 
-    const singles =
-        data.rank?.singles || [];
-
-
-    const averages =
-        data.rank?.averages || [];
+    const averages = data.rank?.averages || [];
 
 
     // ========================================================
@@ -77,8 +71,7 @@ export function construirPRs(data) {
         }
 
 
-        mapaPRs[item.eventId].average =
-            item.best;
+        mapaPRs[item.eventId].average = item.best;
     });
 
 
@@ -86,14 +79,10 @@ export function construirPRs(data) {
     // BUSCAR COMPETICIONES
     // ========================================================
 
-    buscarTorneosPR(
-        data,
-        mapaPRs
-    );
+    buscarTorneosPR(data, mapaPRs);
 
 
-    const listaPRs =
-        Object.values(mapaPRs);
+    const listaPRs = Object.values(mapaPRs);
 
 
     // ========================================================
@@ -102,85 +91,35 @@ export function construirPRs(data) {
 
     listaPRs.forEach(pr => {
 
-        const fila =
-            document.createElement("tr");
+        const fila = document.createElement("tr");
 
 
         // ----------------------------------------------------
         // CATEGORÍA
         // ----------------------------------------------------
 
-        const categoria =
-            document.createElement("td");
-
-
-        categoria.textContent =
-            obtenerNombreEvento(
-                pr.eventId
-            );
+        const categoria = document.createElement("td");
+        categoria.textContent = obtenerNombreEvento(pr.eventId);
 
 
         // ----------------------------------------------------
         // SINGLE
         // ----------------------------------------------------
 
-        const single =
-            document.createElement("td");
+        const single = document.createElement("td");
 
 
-        if (
-            pr.single > 0 ||
-            pr.single === -1 ||
-            pr.single === -2
-        ) {
+        if (pr.single > 0 || pr.single === -1 || pr.single === -2) {
 
-            const tiempoSingle =
-                document.createElement("div");
-
-
-            tiempoSingle.textContent =
-                formatearTiempoWCA(
-                    pr.single,
-                    pr.eventId,
-                    "single"
-                );
-
-
-            tiempoSingle.classList.add(
-                "tiempo-single"
-            );
-
-
-            aplicarColorResultado(
-                tiempoSingle,
-                pr.single
-            );
-
-
-            const torneoSingle =
-                document.createElement("div");
-
-
-            torneoSingle.textContent =
-                obtenerNombreTorneo(
-                    pr.torneoSingle
-                ) ||
-                "Competición no encontrada";
-
-
-            torneoSingle.classList.add(
-                "torneo-pr"
-            );
-
-
-            single.appendChild(
-                tiempoSingle
-            );
-
-
-            single.appendChild(
-                torneoSingle
-            );
+            const tiempoSingle =document.createElement("div");
+            tiempoSingle.textContent =formatearTiempoWCA(pr.single, pr.eventId, "single");
+            tiempoSingle.classList.add("tiempo-single");
+            aplicarColorResultado(tiempoSingle, pr.single)
+            const torneoSingle = document.createElement("div");
+            torneoSingle.textContent = obtenerNombreTorneo(pr.torneoSingle) || "Competición no encontrada";
+            torneoSingle.classList.add("torneo-pr");
+            single.appendChild(tiempoSingle);
+            single.appendChild(torneoSingle );
 
         } else {
 
@@ -192,66 +131,19 @@ export function construirPRs(data) {
         // AVERAGE
         // ----------------------------------------------------
 
-        const average =
-            document.createElement("td");
+        const average = document.createElement("td");
 
-
-        if (
-            pr.average > 0 ||
-            pr.average === -1 ||
-            pr.average === -2
-        ) {
-
-            const tiempoAverage =
-                document.createElement("div");
-
-
-            tiempoAverage.textContent =
-                formatearTiempoWCA(
-                    pr.average,
-                    pr.eventId,
-                    "average"
-                );
-
-
-            tiempoAverage.classList.add(
-                "tiempo-average"
-            );
-
-
-            aplicarColorResultado(
-                tiempoAverage,
-                pr.average
-            );
-
-
-            const torneoAverage =
-                document.createElement("div");
-
-
-            torneoAverage.textContent =
-                obtenerNombreTorneo(
-                    pr.torneoAverage
-                ) ||
-                "Competición no encontrada";
-
-
-            torneoAverage.classList.add(
-                "torneo-pr"
-            );
-
-
-            average.appendChild(
-                tiempoAverage
-            );
-
-
-            average.appendChild(
-                torneoAverage
-            );
-
+        if (pr.average > 0 || pr.average === -1 || pr.average === -2) {
+            const tiempoAverage = document.createElement("div");
+            tiempoAverage.textContent = formatearTiempoWCA(pr.average, pr.eventId, "average");
+            tiempoAverage.classList.add("tiempo-average");
+            aplicarColorResultado(tiempoAverage, pr.average);
+            const torneoAverage = document.createElement("div");
+            torneoAverage.textContent = obtenerNombreTorneo(pr.torneoAverage) || "Competición no encontrada";
+            torneoAverage.classList.add("torneo-pr");
+            average.appendChild(tiempoAverage);
+            average.appendChild(torneoAverage);
         } else {
-
             average.textContent = "-";
         }
 
@@ -263,7 +155,6 @@ export function construirPRs(data) {
         fila.appendChild(categoria);
         fila.appendChild(single);
         fila.appendChild(average);
-
         tablaPRs.appendChild(fila);
     });
 
@@ -274,24 +165,12 @@ export function construirPRs(data) {
 
     if (listaPRs.length === 0) {
 
-        const fila =
-            document.createElement("tr");
-
-
-        const celda =
-            document.createElement("td");
-
+        const fila = document.createElement("tr");
+        const celda = document.createElement("td");
 
         celda.colSpan = 3;
-
-
-        celda.textContent =
-            "No hay récords registrados.";
-
-
+        celda.textContent = "No hay récords registrados.";
         fila.appendChild(celda);
-
-
         tablaPRs.appendChild(fila);
     }
 }
@@ -301,70 +180,29 @@ export function construirPRs(data) {
 // BUSCAR COMPETICIONES DE LOS PRs
 // ============================================================
 
-function buscarTorneosPR(
-    data,
-    mapaPRs
-) {
-
-    if (!data.results) {
-        return;
+function actualizarPRDeRonda(ronda, pr, nombreTorneo) {
+    // Procesar SINGLE
+    if (pr.single !== 0 && ronda.best === pr.single && !pr.torneoSingle) {
+        pr.torneoSingle = nombreTorneo;
     }
 
+    // Procesar AVERAGE
+    if (pr.average !== 0 && ronda.average === pr.average && !pr.torneoAverage) {
+        pr.torneoAverage = nombreTorneo;
+    }
+}
 
-    Object.entries(
-        data.results
-    ).forEach(
-        ([nombreTorneo, categorias]) => {
+function buscarTorneosPR(data, mapaPRs) {
+    // Cláusula de guarda para evitar el anidamiento inicial
+    if (!data?.results) return;
 
-            Object.entries(
-                categorias
-            ).forEach(
-                ([idCategoria, rondas]) => {
+    for (const [nombreTorneo, categorias] of Object.entries(data.results)) {
+        for (const [idCategoria, rondas] of Object.entries(categorias)) {
+            const pr = mapaPRs[idCategoria];
+            if (!pr) continue; // Saltamos si no existe el PR
 
-                    const pr =
-                        mapaPRs[idCategoria];
-
-
-                    if (!pr) {
-                        return;
-                    }
-
-
-                    rondas.forEach(
-                        ronda => {
-
-                            // --------------------------------
-                            // SINGLE
-                            // --------------------------------
-
-                            if (
-                                pr.single !== 0 &&
-                                ronda.best === pr.single &&
-                                !pr.torneoSingle
-                            ) {
-
-                                pr.torneoSingle =
-                                    nombreTorneo;
-                            }
-
-
-                            // --------------------------------
-                            // AVERAGE
-                            // --------------------------------
-
-                            if (
-                                pr.average !== 0 &&
-                                ronda.average === pr.average &&
-                                !pr.torneoAverage
-                            ) {
-
-                                pr.torneoAverage =
-                                    nombreTorneo;
-                            }
-                        }
-                    );
-                }
-            );
+            // Procesamos las rondas con la función auxiliar
+            rondas.forEach(ronda => actualizarPRDeRonda(ronda, pr, nombreTorneo));
         }
-    );
+    }
 }
