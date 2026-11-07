@@ -9,6 +9,7 @@ import {
     formatearTiempoWCA,
     aplicarColorResultado
 } from "./format.js";
+import { t } from "./i18n.js"; // Importamos el traductor
 
 // Variables persistentes para guardar el estado actual
 let historialGlobal = [];
@@ -27,10 +28,11 @@ export function construirHistorial(data) {
     Object.entries(data.results).forEach(([nombreTorneo, categorias]) => {
         Object.entries(categorias).forEach(([idCategoria, rondas]) => {
             rondas.forEach(ronda => {
+                const claveRonda = ronda.round || "ronda_vacia";
                 historialGlobal.push({
                     nombreTorneo,
                     idCategoria,
-                    ronda: ronda.round || "-",
+                    ronda: t(`rondas.${claveRonda}`), 
                     best: ronda.best,
                     average: ronda.average
                 });
@@ -123,7 +125,10 @@ function mostrarSinResultados(tablaHistorial) {
     const fila = document.createElement("tr");
     const celda = document.createElement("td");
     celda.colSpan = 5;
-    celda.textContent = "No hay resultados registrados.";
+    
+    // Traducimos dinámicamente el aviso de historial vacío
+    celda.textContent = t("sin_resultados_historial");
+    
     fila.appendChild(celda);
     tablaHistorial.appendChild(fila);
 }

@@ -3,29 +3,25 @@
 ** search.js
 */
 
-
 import { esWcaId, buscarPersonas } from "./api.js";
 import { obtenerNombrePais } from "./format.js";
+import { t } from "./i18n.js";
 
 const MAX_SUGERENCIAS = 10;
-
 
 // ============================================================
 // LISTA DE SUGERENCIAS
 // ============================================================
-
 function mostrarSugerencias(lista, personas, alElegir) {
-
     lista.replaceChildren();
 
     personas.slice(0, MAX_SUGERENCIAS).forEach(persona => {
-
         const item = document.createElement("li");
         const boton = document.createElement("button");
 
         boton.type = "button";
 
-        const pais = obtenerNombrePais(persona.pais) || "No especificado";
+        const pais = obtenerNombrePais(persona.pais) || t("pais_no_especificado");
 
         boton.textContent =
             `${persona.nombre} · ${persona.id}` +
@@ -41,19 +37,13 @@ function mostrarSugerencias(lista, personas, alElegir) {
     });
 }
 
-
 // ============================================================
 // PROCESAR LO QUE ESCRIBE EL USUARIO
-// - WCA ID  -> se carga directamente
-// - nombre  -> se busca en la API oficial y se pasa el WCA ID
-//              a la función `cargar`
 // ============================================================
-
 export async function procesarBusqueda(
     texto,
     { lista, mostrarMensaje, cargar }
 ) {
-
     lista.replaceChildren();
 
     const entrada = texto.trim();
@@ -63,7 +53,7 @@ export async function procesarBusqueda(
         return cargar(comoId);
     }
 
-    mostrarMensaje("Buscando por nombre...");
+    mostrarMensaje(t("buscando_por_nombre"));
 
     let personas;
 
@@ -71,19 +61,23 @@ export async function procesarBusqueda(
         personas = await buscarPersonas(entrada);
     } catch (error) {
         console.error(error);
-        mostrarMensaje("No se pudo buscar por nombre. Inténtalo de nuevo.");
+        if (error.isI18n) {
+            mostrarMensaje(t(error.message, error.context));
+        } else {
+            mostrarMensaje(t("error_buscar_personas_fallback"));
+        }
         return;
     }
 
     if (personas.length === 0) {
-        mostrarMensaje("No se encontró ningún competidor con ese nombre.");
+        mostrarMensaje(t("sin_resultados_nombre"));
         return;
     }
 
     if (personas.length === 1) {
-        return cargar(personas[0].id);
+        return cargar(personas[0].id); // <-- CORREGIDO: personas[0].id
     }
 
-    mostrarMensaje("Hay varios resultados, elige uno:");
+    mostrarMensaje(t("multiples_resultados"));
     mostrarSugerencias(lista, personas, cargar);
 }

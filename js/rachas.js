@@ -15,7 +15,9 @@ import {
     obtenerNombreTorneo,
     formatearTiempoWCA
 } from "./format.js";
+import { inicializarIdioma, obtenerIdiomaActual, t} from "./i18n.js";
 
+inicializarIdioma();
 
 // ============================================================
 // ELEMENTOS DEL HTML
@@ -81,7 +83,7 @@ async function cargarRachas(wcaId) {
 
     campoWcaId.value = wcaId;
 
-    mensaje.textContent = "Buscando...";
+    mensaje.textContent = t("buscando");
     resultado.hidden = true;
 
     try {
@@ -92,20 +94,17 @@ async function cargarRachas(wcaId) {
 
         if (ids.length === 0) {
 
-            mensaje.textContent =
-                "Este competidor todavía no tiene resultados.";
+            mensaje.textContent = t("competidor_sin_resultados");
 
             return;
         }
 
-        mensaje.textContent =
-            `Cargando fechas (0/${ids.length})...`;
+        mensaje.textContent = t("cargando_fechas", { hechas: 0, total: ids.length });
 
         const fechas = await obtenerFechas(
             ids,
             hechas => {
-                mensaje.textContent =
-                    `Cargando fechas (${hechas}/${ids.length})...`;
+                mensaje.textContent = t("cargando_fechas", { hechas, total: ids.length });
             }
         );
 
@@ -122,10 +121,11 @@ async function cargarRachas(wcaId) {
 
         resultado.hidden = true;
 
-        mensaje.textContent =
-            "No se pudo encontrar el perfil. " +
-            "Comprueba que el WCA ID sea correcto " +
-            "y que tengas conexión a Internet.";
+        if (error.isI18n) {
+            mensaje.textContent = t(error.message, error.context);
+        } else {
+            mensaje.textContent = t("error_cargar_competidor_fallback");
+        }
     }
 }
 
@@ -165,8 +165,17 @@ function formatearFecha(fecha) {
         return "-";
     }
 
+    const idioma = obtenerIdiomaActual();
+    // añadir idiomas al mapaLocales si es necesario
+    const mapaLocales = {
+        es: "es-ES",
+        en: "en-US"
+    }
+
+    const locale = mapaLocales[idioma] || "es-ES";
+
     return new Date(fecha + "T00:00:00").toLocaleDateString(
-        "es-ES",
+        locale,
         { year: "numeric", month: "short", day: "numeric" }
     );
 }
@@ -182,8 +191,7 @@ function describirRango(primera, ultima) {
 }
 
 function textoCompeticiones(n) {
-
-    return n === 1 ? "competición" : "competiciones";
+    return n === 1 ? t("competicion_singular") : t("competicion_plural");
 }
 
 
@@ -219,8 +227,7 @@ function mostrarRachas(data, rachas) {
     document.getElementById("detalleActual").textContent =
         actual > 0
             ? describirRango(detalle[total - actual], detalle[total - 1])
-            : "No hay racha activa: en la última competición " +
-              "no se consiguió ni igualó ningún PR.";
+            : t("sin_racha_activa");
 
 
     // ------------------------------------------------------
@@ -236,7 +243,7 @@ function mostrarRachas(data, rachas) {
     document.getElementById("detalleMaxima").textContent =
         maxima.longitud > 0
             ? describirRango(detalle[maxima.inicio], detalle[maxima.fin])
-            : "Nunca se ha conseguido un PR.";
+            : t("nunca_pr");
 
 
     construirTabla(rachas);
@@ -299,21 +306,22 @@ function construirTabla({ detalle, actual, maxima }) {
         const celdaPRs = document.createElement("td");
 
         if (competicion.prs.length === 0) {
-
             celdaPRs.appendChild(
-                crear("span", "sin-pr", "Sin PR")
+                // Traducimos el texto indicativo de que no hubo récords
+                crear("span", "sin-pr", t("sin_pr"))
             );
-
         } else {
-
             competicion.prs.forEach(pr => {
-
-                const tipo = pr.tipo === "single" ? "Single" : "Average";
+                // Traducimos los tipos de récord (Single / Average)
+                const tipo = pr.tipo === "single" ? t("single_corto") : t("average_corto");
+                
+                // Traducimos el sufijo de empate si corresponde
+                const sufijoEmpate = pr.empate ? t("pr_empate_sufijo") : "";
 
                 const texto =
                     `${obtenerNombreEvento(pr.evento)} · ${tipo} ` +
                     formatearTiempoWCA(pr.valor, pr.evento, pr.tipo) +
-                    (pr.empate ? " (empate)" : "");
+                    sufijoEmpate;
 
                 celdaPRs.appendChild(
                     crear(

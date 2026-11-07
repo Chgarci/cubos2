@@ -4,6 +4,7 @@
 */
 
 import { API_BASE } from "./config.js";
+import { ErrorI18n } from "./i18n.js";
 
 // API oficial: SOLO para buscar un WCA ID a partir de un nombre
 const WCA_OFICIAL = "https://www.worldcubeassociation.org/api/v0";
@@ -33,7 +34,7 @@ export async function buscarPersonas(nombre) {
     );
 
     if (!respuesta.ok) {
-        throw new Error(`Error ${respuesta.status} al buscar "${nombre}"`);
+        throw new ErrorI18n("error-buscar-persona", {status: respuesta.status, nombre});
     }
 
     const datos = await respuesta.json();
@@ -59,9 +60,7 @@ export async function obtenerCompetidor(wcaId) {
     );
 
     if (!respuesta.ok) {
-        throw new Error(
-            `No se encontró el WCA ID ${wcaId}`
-        );
+        throw new ErrorI18n("error_competidor_no_encontrado", {status: respuesta.status, wcaId});
     }
 
     return await respuesta.json();
@@ -91,9 +90,7 @@ async function obtenerFechaCompeticion(idCompeticion) {
     );
 
     if (!respuesta.ok) {
-        throw new Error(
-            `No se encontró la competición ${idCompeticion}`
-        );
+        throw new ErrorI18n("error_competicion_no_encontrada", {status: respuesta.status, idCompeticion});
     }
 
     const competicion = await respuesta.json();
