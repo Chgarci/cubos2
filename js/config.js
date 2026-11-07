@@ -38,40 +38,71 @@ export const nombresEventos = {
 // config.js
 
 export const traducciones = {
+
     es: {
-
-        // Textos de la interfaz
-
-        navResultados: "PR y Resultados",
-        navRachas: "Racha PR",
+        // Componentes globales y elementos comunes de la interfaz
+        labelPais: "País:",
+        labelTorneos: "Torneos:",
         placeholderBuscador: "WCA ID o nombre (ej. 2009ZEMD01 / Feliks Zemdegs)",
         botonBuscar: "Buscar",
         buscando: "Buscando...",
-        errorPerfil: "No se pudo encontrar el perfil. Comprueba el WCA ID y tu conexión.",
-
-        // Textos de la página principal (index.html)
-
-        labelPais: "País:",
-        labelTorneos: "Torneos:",
-
-
-        tituloPR: "Récords Personales (PRs)",
+        pais_no_especificado: "No especificado",
+        competicion_singular: "competición",
+        competicion_plural: "Competiciones",
+    
+        // Barra de navegación
+        navResultados: "PR y Resultados",
+        navRachas: "Racha PR",
+    
+        // Cabeceras de tablas genéricas (th)
         thCategoria: "Categoría",
         thMejorSingle: "Mejor Single",
         thMejorAverage: "Mejor Average",
-        tituloHistorial: "Historial Completo de Resultados",
-        placeholderFiltroTorneo: "Buscar por torneo...",
-        optionTodasCategorias: "Todas",
-        
         thTorneo: "Torneo",
         thCubo: "Cubo",
         thRonda: "Ronda",
         thMejor: "Mejor",
         thMedia: "Media",
+        thFecha: "Fecha",
+        thRachaMomento: "Racha",
+    
+        // Vista principal de Resultados (index.html)
+        tituloPR: "Récords Personales (PRs)",
+        tituloHistorial: "Historial Completo de Resultados",
+        placeholderFiltroTorneo: "Buscar por torneo...",
+        optionTodasCategorias: "Todas",
+        sin_resultados_historial: "No hay resultados registrados.",
+    
+        // Vista del calculador de rachas (rachas.html)
+        tituloCalcRachas: "Calculadora de rachas de PR",
+        textoExplicacionRachas: "Recorremos todas las competiciones del competidor en orden. Si en una competición consigue o iguala un PR en al menos un evento (single o average), la racha continúa; si no, vuelve a cero.",
+        tituloRachaActual: "Racha actual",
+        tituloRachaMaxima: "Racha más larga",
+        tituloCompeticionACompeticion: "Competición a competición",
+        sin_racha_activa: "No hay racha activa",
+        leyendaRachaMax: "Racha más larga",
+        leyendaRachaActual: "Racha actual",
+        sin_pr: "Sin PR",
+        single_corto: "Single",
+        average_corto: "Average",
+        pr_empate_sufijo: " (empate)",
+    
+        // Estados y flujos intermedios de los buscadores
+        buscando_por_nombre: "Buscando por nombre...",
+        sin_resultados_nombre: "No se encontró ningún competidor con ese nombre.",
+        multiples_resultados: "Hay varios resultados, elige uno:",
+        escribe_id_o_nombre: "Escribe un WCA ID o un nombre para buscar",
+    
+        // Gestión centralizada de errores (API e Interfaz)
+        errorPerfil: "No se pudo encontrar el perfil. Comprueba el WCA ID y tu conexión.",
+        error_buscar_personas: "Error {status} al buscar \"{nombre}\"",
+        error_buscar_personas_fallback: "No se pudo buscar por nombre. Inténtalo de nuevo.",
+        error_cargar_competidor_fallback: "No se pudo encontrar el perfil. Comprueba que el WCA ID sea correcto y que tengas conexión a Internet.",
+        error_competidor_no_encontrado: "No se pudo encontrar el competidor con WCA ID {wcaId}. Comprueba que sea correcto y que tengas conexión a Internet.",
+        error_competicion_no_encontrada: "No se encontró la competición {idCompeticion}",
 
-
-
-
+    
+        // Diccionarios específicos
         paises: {
             "AD" : "Andorra",
             "AE" : "Emiratos Árabes Unidos",
@@ -323,7 +354,7 @@ export const traducciones = {
             "ZM" : "Zambia",
             "ZW" : "Zimbabue"
         },
-
+        
         rondas: {
             ronda_vacia: "-",
             Final: "Final",
@@ -331,78 +362,78 @@ export const traducciones = {
             "First round": "Primera ronda",
             "Second round": "Segunda ronda",
             "Third round": "Tercera ronda"
-        },
-
-        // Textos de la página de rachas (rachas.html)
-
-        tituloCalcRachas: "Calculadora de rachas de PR",
-        textoExplicacionRachas: 
-        "Recorremos todas las competiciones del competidor en orden. Si en una competición consigue o iguala un PR en al menos un evento (single o average), la racha continúa; si no, vuelve a cero.",
-        tituloRachaActual: "Racha actual",
-        tituloRachaMaxima: "Racha más larga",
-
-        tituloCompeticionACompeticion: "Competición a competición",
-        thFecha: "Fecha",
-        thRachaMomento: "Racha",
-        leyendaRachaMax: "Racha más larga",
-        leyendaRachaActual: "Racha actual",
-
-        // Errores de API
-        error_buscar_personas: "Error {status} al buscar \"{nombre}\"",
-
-        // Mensajes de la interfaz de búsqueda
-        buscando_por_nombre: "Buscando por nombre...",
-        error_buscar_personas_fallback: "No se pudo buscar por nombre. Inténtalo de nuevo.",
-        sin_resultados_nombre: "No se encontró ningún competidor con ese nombre.",
-        multiples_resultados: "Hay varios resultados, elige uno:",
-        pais_no_especificado: "No especificado",
-
-        escribe_id_o_nombre: "Escribe un WCA ID o un nombre para buscar",
-        buscando:"Buscando...",
-        error_cargar_competidor_fallback: "No se pudo encontrar el perfil. Comprueba que el WCA ID sea correcto y que tengas conexión a Internet.",
-        error_competidor_no_encontrado: "No se pudo encontrar el competidor con WCA ID {wcaId}. Comprueba que sea correcto y que tengas conexión a Internet.",
-
-
-        sin_pr: "Sin PR",
-        single_corto: "Single",
-        average_corto: "Average",
-        pr_empate_sufijo: " (empate)",
-
-
-        sin_racha_activa: "No hay racha activa",
-        competicion_plural: "Competiciones",
-    },
-
-
+        }
+    }, 
 
     en: {
 
-        navResultados: "PRs & Results",
-        navRachas: "PR Streak",
 
+        // Componentes globales y elementos comunes de la interfaz
         labelPais: "Country:",
         labelTorneos: "Tournaments:",
         placeholderBuscador: "WCA ID or name (e.g., 2009ZEMD01 / Feliks Zemdegs)",
         botonBuscar: "Search",
         buscando: "Searching...",
-        errorPerfil: "Could not find profile. Check the WCA ID and your connection.",
+        pais_no_especificado: "Not specified",
+        competicion_singular: "competition",
+        competicion_plural: "Competitions",
 
+        // Barra de navegación
+        navResultados: "PRs & Results",
+        navRachas: "PR Streak",
 
-
-        // index.html
-        tituloPR: "Personal Records (PRs)",
+        // Cabezeras de tablas genericas (th)
         thCategoria: "Category",
         thMejorSingle: "Best Single",
         thMejorAverage: "Best Average",
-        tituloHistorial: "Complete Results History",
-        placeholderFiltroTorneo: "Search tournament...",
-        optionTodasCategorias: "All Categories",
-
         thTorneo: "Tournament",
         thCubo: "Cube",
         thRonda: "Round",
         thMejor: "Best",
         thMedia: "Average",
+        thFecha: "Date",
+        thRachaMomento: "Streak",
+
+        // Textos de Resultados (index.html)
+        tituloPR: "Personal Records (PRs)",
+        tituloHistorial: "Complete Results History",
+        placeholderFiltroTorneo: "Search tournament...",
+        optionTodasCategorias: "All Categories",
+        sin_resultados_historial: "No results recorded.",
+
+
+        // Textos de Rachas (rachas.html)
+        tituloCalcRachas: "PR Streak Calculator",
+        textoExplicacionRachas: "We go through all the competitor's competitions in order. If in a competition they achieve or match a PR in at least one event (single or average), the streak continues; if not, it resets to zero.",
+        tituloRachaActual: "Current streak",
+        tituloRachaMaxima: "Longest streak",
+        tituloCompeticionACompeticion: "Competition to competition",
+        sin_racha_activa: "No active streak",
+        leyendaRachaMax: "Longest streak",
+        leyendaRachaActual: "Current streak",
+        sin_pr: "No PR",
+        single_corto: "Single",
+        average_corto: "Average",
+        pr_empate_sufijo: " (tie)", 
+
+        // Mensajes de la interfaz de búsqueda / Estados y flujos intermedios de los buscadores
+        buscando_por_nombre: "Searching by name...",
+        sin_resultados_nombre: "No competitor found with that name.",
+        multiples_resultados: "Multiple results found, please choose one:",
+        escribe_id_o_nombre: "Enter a WCA ID or name to search", 
+
+
+        // Gestión centralizada de errores (API e Interfaz)
+        errorPerfil: "Could not find profile. Check the WCA ID and your connection.",
+        error_buscar_personas: "Error {status} while searching for \"{nombre}\"",
+        error_buscar_personas_fallback: "Could not search by name. Please try again.",
+        error_cargar_competidor_fallback: "Could not find the profile. Check that the WCA ID is correct and that you have an internet connection.",
+        error_competidor_no_encontrado: "Could not find competitor with WCA ID {wcaId}. Please check that it is correct and that you have an internet connection.",
+        error_competicion_no_encontrada: "Competition {idCompeticion} not found", 
+
+
+
+
 
         paises: {
             "AD" : "Andorra",
@@ -666,40 +697,6 @@ export const traducciones = {
             "Third round": "Third round",
         },
 
-        //rachas.html
-        tituloCalcRachas: "PR Streak Calculator",
-        textoExplicacionRachas: 
-        "We go through all the competitor's competitions in order. If in a competition they achieve or match a PR in at least one event (single or average), the streak continues; if not, it resets to zero.",
-        tituloRachaActual: "Current streak",
-        tituloRachaMaxima: "Longest streak",
 
-        tituloCompeticionACompeticion: "Competition to competition",
-        thFecha: "Date",
-        thRachaMomento: "Streak",
-        leyendaRachaMax: "Longest streak",
-        leyendaRachaActual: "Current streak",
-
-
-        error_buscar_personas: "Error {status} while searching for \"{nombre}\"",
-        
-        // Mensajes de la interfaz de búsqueda
-        buscando_por_nombre: "Searching by name...",
-        error_buscar_personas_fallback: "Could not search by name. Please try again.",
-        sin_resultados_nombre: "No competitor found with that name.",
-        multiples_resultados: "Multiple results found, please choose one:",
-        pais_no_especificado: "Not specified",
-
-        escribe_id_o_nombre: "Enter a WCA ID or name to search",
-        buscando:"Searching...",
-        error_cargar_competidor_fallback: "Could not find the profile. Check that the WCA ID is correct and that you have an internet connection.",
-        error_competidor_no_encontrado: "Could not find competitor with WCA ID {wcaId}. Please check that it is correct and that you have an internet connection.",
-
-        sin_pr: "No PR",
-        single_corto: "Single",
-        average_corto: "Average",
-        pr_empate_sufijo: " (tie)",
-
-        sin_racha_activa: "No active streak",
-        competicion_plural: "Competitions",
     }
 };
