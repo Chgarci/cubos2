@@ -1,0 +1,163 @@
+/* ============================================================
+   CALCULADORA BPA Y WPA (NUEVO)
+   ============================================================ */
+
+   .calculadora-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.calculadora-container h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Selector de formato */
+.formato-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    background-color: #f8fafc;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.formato-selector label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#formatSelect {
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: white;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+#formatSelect:focus {
+    border-color: #3498db;
+}
+
+/* Inputs de intentos */
+.intentos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.input-group label {
+    flex: 1;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.input-group input {
+    flex: 3;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #3498db;
+}
+
+/* Panel de Resultados Proyectados */
+.resultados-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px dashed #e2e8f0;
+}
+
+.resultado-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.resultado-label {
+    font-weight: bold;
+}
+
+.resultado-item strong {
+    font-size: 1.3rem;
+    font-family: monospace; /* Para que los tiempos se alineen bien visualmente */
+}
+
+/* Colores específicos para destacar los resultados según tu paleta */
+#bpa-value {
+    color: #27ae60; /* Verde PR */
+}
+
+#wpa-value {
+    color: #e74c3c; /* Rojo DNF */
+}
+
+#current-avg-value {
+    color: #2980b9; /* Azul Average */
+}
+
+
+/* ============================================================
+   AJUSTES MÓVIL PARA CALCULADORA
+   ============================================================ */
+
+@media (max-width: 600px) {
+    .formato-selector {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    #formatSelect {
+        width: 100%;
+    }
+
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    .resultado-item {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    .resultado-item strong {
+        align-self: flex-end;
+        font-size: 1.4rem;
+    }
+}

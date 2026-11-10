@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubeStats WCA - BPA & WPA</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bpa.css">
+    <script type="module" src="js/app.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>CubeStats WCA</h1>
+
+        <div class="selector-idioma">
+            <button id="btn-es">ES</button>
+            <button id="btn-en">EN</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="navResultados">PR y resultados</a></li>
+                <li><a href="rachas.html" data-i18n="navRachas">Racha PR</a></li>
+                <li><a href="BPA_WPA.html" data-i18n="navBPAWPA">BPA y WPA</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="calculadora-container">
+        <h2 data-i18n="calcTitulo">Calculadora de BPA y WPA</h2>
+        
+        <!-- Selector de formato de ronda -->
+        <div class="formato-selector">
+            <label for="formatSelect" data-i18n="calcFormatoLabel">Formato de ronda:</label>
+            <select id="formatSelect">
+                <option value="ao5" selected>Average of 5 (Ao5)</option>
+                <option value="mo3">Mean of 3 (Mo3)</option>
+            </select>
+        </div>
+
+        <!-- Inputs de intentos -->
+        <div class="intentos-container">
+            <div class="input-group" id="group-attempt1">
+                <label for="attempt1" data-i18n="labelAttempt1">Intento 1:</label>
+                <input type="text" id="attempt1" data-i18n-placeholder="placeholderAttempt1" placeholder="Ej: 8.50 o DNF">
+            </div>
+
+            <div class="input-group" id="group-attempt2">
+                <label for="attempt2" data-i18n="labelAttempt2">Intento 2:</label>
+                <input type="text" id="attempt2" data-i18n-placeholder="placeholderAttempt2" placeholder="Ej: 8.50 o DNF">
+            </div>
+
+            <div class="input-group" id="group-attempt3">
+                <label for="attempt3" data-i18n="labelAttempt3">Intento 3:</label>
+                <input type="text" id="attempt3" data-i18n-placeholder="placeholderAttempt3" placeholder="Ej: 8.50 o DNF">
+            </div>
+
+            <div class="input-group" id="group-attempt4">
+                <label for="attempt4" data-i18n="labelAttempt4">Intento 4:</label>
+                <input type="text" id="attempt4" data-i18n-placeholder="placeholderAttempt4" placeholder="Ej: 8.50 o DNF">
+            </div>
+
+            <div class="input-group" id="group-attempt5">
+                <label for="attempt5" data-i18n="labelAttempt5">Intento 5:</label>
+                <input type="text" id="attempt5" data-i18n-placeholder="placeholderAttempt5" placeholder="Ej: 8.50 o DNF">
+            </div>
+        </div>
+
+        <!-- Panel de resultados proyectados -->
+        <div class="resultados-container">
+            <div class="resultado-item">
+                <span class="resultado-label" data-i18n="resBPA">BPA (Mejor promedio posible):</span>
+                <strong id="bpa-value">--</strong>
+            </div>
+            <div class="resultado-item">
+                <span class="resultado-label" data-i18n="resWPA">WPA (Peor promedio posible):</span>
+                <strong id="wpa-value">--</strong>
+            </div>
+            <div class="resultado-item">
+                <span class="resultado-label" data-i18n="resActual">Promedio actual:</span>
+                <strong id="current-avg-value">--</strong>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CubeStats WCA. <span data-i18n="copyrightDerechos">Todos los derechos reservados.</span></p>
+        <p class="legal-disclaimer" data-i18n="disclaimerTexto">
+            Este sitio web es un proyecto personal, independiente y sin fines de lucro. No está afiliado, respaldado, asociado ni patrocinado oficialmente por la World Cube Association (WCA). Todos los datos de competiciones y marcas mostrados son públicos, se obtienen a partir de herramientas de código abierto de la comunidad en GitHub y pertenecen a sus respectivos titulares.
+        </p>
+    </footer>
+
+</body>
+</html>

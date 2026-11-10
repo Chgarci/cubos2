@@ -53,6 +53,7 @@ export const traducciones = {
         // Barra de navegación
         navResultados: "PR y Resultados",
         navRachas: "Racha PR",
+        navBPAWPA: "BPA y WPA",
     
         // Cabeceras de tablas genéricas (th)
         thCategoria: "Categoría",
@@ -101,6 +102,21 @@ export const traducciones = {
         error_competidor_no_encontrado: "No se pudo encontrar el competidor con WCA ID {wcaId}. Comprueba que sea correcto y que tengas conexión a Internet.",
         error_competicion_no_encontrada: "No se encontró la competición {idCompeticion}",
 
+        calcTitulo: "Calculadora de BPA y WPA",
+        calcFormatoLabel: "Round format:",
+        labelAttempt1: "Intento 1:",
+        labelAttempt2: "Intento 2:",
+        labelAttempt3: "Intento 3:",
+        labelAttempt4: "Intento 4:",
+        labelAttempt5: "Intento 5:",
+        placeholderAttempt1: "e.j., 8.50 or DNF",
+        placeholderAttempt2: "e.j., 8.50 or DNF",
+        placeholderAttempt3: "e.j., 8.50 or DNF",
+        placeholderAttempt4: "e.j., 8.50 or DNF",
+        placeholderAttempt5: "e.j., 8.50 or DNF",
+        resBPA: "BPA (Mejor media posible):",
+        resWPA: "WPA (Peor media posible):",
+        resActual: "Current average:",
     
         // Diccionarios específicos
         paises: {
@@ -381,6 +397,7 @@ export const traducciones = {
         // Barra de navegación
         navResultados: "PRs & Results",
         navRachas: "PR Streak",
+        navBPAWPA: "BPA & WPA",
 
         // Cabezeras de tablas genericas (th)
         thCategoria: "Category",
@@ -432,6 +449,21 @@ export const traducciones = {
         error_competicion_no_encontrada: "Competition {idCompeticion} not found", 
 
 
+        calcTitulo: "BPA and WPA Calculator",
+        calcFormatoLabel: "Round format:",
+        labelAttempt1: "Attempt 1:",
+        labelAttempt2: "Attempt 2:",
+        labelAttempt3: "Attempt 3:",
+        labelAttempt4: "Attempt 4:",
+        labelAttempt5: "Attempt 5:",
+        placeholderAttempt1: "e.g., 8.50 or DNF",
+        placeholderAttempt2: "e.g., 8.50 or DNF",
+        placeholderAttempt3: "e.g., 8.50 or DNF",
+        placeholderAttempt4: "e.g., 8.50 or DNF",
+        placeholderAttempt5: "e.g., 8.50 or DNF",
+        resBPA: "BPA (Best possible average):",
+        resWPA: "WPA (Worst possible average):",
+        resActual: "Current average:",
 
 
 
