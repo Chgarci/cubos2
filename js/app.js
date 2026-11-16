@@ -11,6 +11,7 @@ import { obtenerCompetidor } from "./api.js";
 import { mostrarPerfil } from "./profile.js";
 import { procesarBusqueda } from "./search.js";
 import { inicializarIdioma, t } from "./i18n.js";
+import { inicializarCalculadora } from "./BPA_WPA.js";
 
 inicializarIdioma();
 
@@ -31,15 +32,19 @@ const sugerencias = document.getElementById("sugerencias");
 // EVENTOS
 // ============================================================
 
-botonBuscar.addEventListener("click", buscarCompetidor);
+if (botonBuscar) {
+    botonBuscar.addEventListener("click", buscarCompetidor);
+}
 
-campoWcaId.addEventListener("keydown", evento => {
+if (campoWcaId) {
+    campoWcaId.addEventListener("keydown", evento => {
 
-    if (evento.key === "Enter") {
-        buscarCompetidor();
-    }
+        if (evento.key === "Enter") {
+            buscarCompetidor();
+        }
 
-});
+    });
+}
 
 
 // ============================================================
@@ -116,3 +121,10 @@ function mostrarMensaje(texto) {
 
     mensaje.textContent = texto;
 }
+
+
+// ============================================================
+// CALCULADORA BPA / WPA
+// ============================================================
+
+inicializarCalculadora();
